@@ -1,0 +1,49 @@
+.subscribe-form {
+    display: flex;
+    margin: 29px 0 0 -3px;
+}
+
+.email-field {
+    width: 280px;
+    height: 60px;
+    background-image: url(content/email_form_field.png);
+}
+
+.email-field input {
+    width: 280px;
+    height: 60px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 2.4px;
+    background: none;
+    font-family: "GothamRounded-Medium";
+    padding-left: 21px;
+}
+
+.email-field input::placeholder {
+    color: #373737;
+}
+
+.email-field input:focus {
+    outline: none;
+    background: none;
+}
+
+.subscribe-button {
+    width: 63px;
+    height: 60px;
+    display: flex;
+    border: none;
+    background-color: #16a085;
+    background-image: url("content/email_form_check.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 23px 24px;
+    transition: all 0.3s ease;
+}
+
+.subscribe-button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+    transition: all 0.3s ease;
+}

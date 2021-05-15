@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <title>Fancy weather</title>
 </head>
 <body>
     <div id="content">
         <div id="top-bar">
             <div id="settings">
-                <div id="refresh">
+                <div class="refresh-back">
                     <img src="resources/Refresh_icon.png">
                 </div>
                 <div id="language-choice"></div>
@@ -22,30 +24,26 @@
                     <div id="celcius" class="temperature-active"></div>
                 </div>
             </div>
-            <div id="search">
-                <div id="search-bar">
-                    <input type="text" name="search" id="search" />
+            <form class="subscribe-form">
+                <div class="email-field">
+                    <input placeholder="YOUR EMAIL" type="email" required>
                     <div id="voice-img">
                         <img src="resources/mic.png" />
                     </div>
                 </div>
-                <div id="search-button">
-                    <h4>
-                        Search
-                    </h4>
-                </div>
-            </div>
+                <input class="subscribe-button" type="submit" value="Search">
+            </form>
         </div>
         <div id="main">
             <div id="weather">
                 <div id="weather-header">
-                    <h1 id="country-city">MINSK, BELARUS</h1>
-                    <h2 id="date-time">Mon 28 October 17:23:12</h2>
+                    <h2 class="location">MINSK, BELARUS</h2>
+                    <time id="date-time">Mon 28 October 00:00:00</time>
                 </div>
                 <div id="today-weather-forecast">
-                    <div id="today-temperature">
-                        <span class="">10</span>
-                        <span id="big-circle">°</span>
+                    <div class="today-temperature">
+                        <span class="today-temperature-value">10</span>
+                        <span class="degree-symbol">°</span>
                     </div>
                     <div id="main-weather-image">
                         <img src="" />
@@ -72,16 +70,18 @@
                     </div>
                 </div>
             </div>
-            <div id="map-nav">
+            <div class="location-container">
                 <div id="map">
-                    <img id="map-image" src="resources/google.png">
                 </div>
-                <div id="coordinates">
-                    <div id="latitutude">Latitude: <span id="latitude-value">53°54'</span></div>
-                    <div id="Longitude">Longitude: <span id="longitude-value">27°34'</span></div>
+                <div class="coordinates">
+                    <div id="latitutude">Latitude: <span id="latitude-value">53</span></div>
+                    <div id="longitude">Longitude: <span id="longitude-value">27</span></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="app/time.js"></script>
+    <script src="app/geolocation.js"></script>
 </body>
 </html>
