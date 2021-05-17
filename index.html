@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/search.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
@@ -24,15 +25,15 @@
                     <div id="celcius" class="temperature-active"></div>
                 </div>
             </div>
-            <form class="subscribe-form">
+            <div class="subscribe-form">
                 <div class="email-field">
-                    <input placeholder="YOUR EMAIL" type="email" required>
-                    <div id="voice-img">
+                    <input id="city-input" placeholder="Enter city" required>
+                    <div id="voice-control">
                         <img src="resources/mic.png" />
                     </div>
                 </div>
-                <input class="subscribe-button" type="submit" value="Search">
-            </form>
+                <button class="subscribe-button">Search</button>
+            </div>
         </div>
         <div id="main">
             <div id="weather">

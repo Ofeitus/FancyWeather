@@ -1,22 +1,24 @@
 .subscribe-form {
     display: flex;
-    margin: 29px 0 0 -3px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .email-field {
+    padding-right: 10px;
+    display: flex;
     width: 280px;
-    height: 60px;
-    background-image: url(content/email_form_field.png);
+    height: 50px;
 }
 
 .email-field input {
-    width: 280px;
-    height: 60px;
+    color: #373737;
+    height: 48px;
     border: none;
+    background: none;
     font-size: 16px;
     letter-spacing: 2.4px;
-    background: none;
-    font-family: "GothamRounded-Medium";
     padding-left: 21px;
 }
 
@@ -25,20 +27,30 @@
 }
 
 .email-field input:focus {
+    color: #373737;
     outline: none;
-    background: none;
+}
+
+#voice-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#voice-control img{
+    height: 30px;
 }
 
 .subscribe-button {
-    width: 63px;
-    height: 60px;
+    font-size: 18px;
+    width: 100px;
+    height: 48px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
-    background-color: #16a085;
-    background-image: url("content/email_form_check.png");
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position: 23px 24px;
+    border-radius: 10px;
+    background-color: #373737;
     transition: all 0.3s ease;
 }
 
