@@ -1,18 +1,18 @@
-.subscribe-form {
+.search-form {
     display: flex;
     height: 48px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-.email-field {
+.location-field {
     padding-right: 10px;
     display: flex;
     width: 280px;
     height: 50px;
 }
 
-.email-field input {
+.location-field input {
     color: #373737;
     height: 48px;
     border: none;
@@ -22,11 +22,11 @@
     padding-left: 21px;
 }
 
-.email-field input::placeholder {
+.location-field input::placeholder {
     color: #373737;
 }
 
-.email-field input:focus {
+.location-field input:focus {
     color: #373737;
     outline: none;
 }
@@ -41,7 +41,7 @@
     height: 30px;
 }
 
-.subscribe-button {
+.search-button {
     font-size: 18px;
     width: 100px;
     height: 48px;
@@ -54,8 +54,8 @@
     transition: all 0.3s ease;
 }
 
-.subscribe-button:hover {
+.search-button:hover {
     cursor: pointer;
-    filter: brightness(90%);
+    background-color: #373737dd;
     transition: all 0.3s ease;
 }

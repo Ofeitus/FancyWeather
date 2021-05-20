@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/toggle_button.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
@@ -19,55 +20,72 @@
                 <div class="refresh-back">
                     <img src="resources/Refresh_icon.png">
                 </div>
-                <div id="language-choice"></div>
-                <div id="temperature-choice">
-                    <div id="forenheit"></div>
-                    <div id="celcius" class="temperature-active"></div>
+                <select class="language-choice">
+                    <option>RU</option>
+                    <option>EN</option>
+                </select>
+
+                <div class="form_toggle">
+                    <div class="form_toggle-item item-1">
+                        <input id="fid-1" type="radio" name="radio" value="off">
+                        <label for="fid-1">°F</label>
+                    </div>
+                    <div class="form_toggle-item item-2">
+                        <input id="fid-2" type="radio" name="radio" value="on" checked>
+                        <label for="fid-2">°C</label>
+                    </div>
                 </div>
             </div>
-            <div class="subscribe-form">
-                <div class="email-field">
-                    <input id="city-input" placeholder="Enter city" required>
+            <div class="search-form">
+                <div class="location-field">
+                    <input id="location-input" placeholder="Enter city or zip" required>
                     <div id="voice-control">
                         <img src="resources/mic.png" />
                     </div>
                 </div>
-                <button class="subscribe-button">Search</button>
+                <button class="search-button">Search</button>
             </div>
         </div>
         <div id="main">
             <div id="weather">
                 <div id="weather-header">
-                    <h2 class="location">MINSK, BELARUS</h2>
+                    <h2 id="location-header">MINSK, BELARUS</h2>
                     <time id="date-time">Mon 28 October 00:00:00</time>
                 </div>
                 <div id="today-weather-forecast">
                     <div class="today-temperature">
-                        <span class="today-temperature-value">10</span>
-                        <span class="degree-symbol">°</span>
+                        <span id="today-temperature-value">0</span>
+                        <span id="degree-symbol">°</span>
                     </div>
-                    <div id="main-weather-image">
-                        <img src="" />
-                    </div>
-                    <div id="weather-info">
-                        <p id="description">OVERCAST</p>
-                        <p id="feels-like">FEELS LIKE : 7</p>
-                        <p id="wind">WIND: 2 m/s</p>
-                        <p id="humidity">HUMIDITY: 83%</p>
+                    <div class="weather-info">
+                        <img id="today-weather-info" src="" alt="">
+                        <p class="weather-info-item" id="description">-</p>
+                        <p class="weather-info-item" id="feels-like">FEELS LIKE: <span id="feels-like-value">0</span>°</p>
+                        <p class="weather-info-item" id="wind-speed">WIND: <span id="wind-speed-value">0</span> m/s</p>
+                        <p class="weather-info-item" id="humidity">HUMIDITY: <span id="humidity-value">0</span>%</p>
                     </div>
                 </div>
-                <div id="future-forecasts">
+                <div class="future-forecasts">
                     <div class="small-forecast">
-                        <p class="week-day">TUESDAY</p>
-                        <p class="future-temperature">7°</p>
+                        <p class="week-day" id="day1">-</p>
+                        <div class="future-weather-info">
+                            <p class="future-temperature" id="temperature1">0°</p>
+                            <img id="future-weather-info1" src="" alt="">
+                        </div>
                     </div>
                     <div class="small-forecast">
-                        <p class="week-day">WEDNSEDAY</p>
-                        <p class="future-temperature">7°</p>
+                        <p class="week-day" id="day2">-</p>
+                        <div class="future-weather-info">
+                            <p class="future-temperature" id="temperature2">0°</p>
+                            <img id="future-weather-info2" src="" alt="">
+                        </div>
                     </div>
                     <div class="small-forecast">
-                        <p class="week-day">THURSDAY</p>
-                        <p class="future-temperature">7°</p>
+                        <p class="week-day" id="day3">-</p>
+                        <div class="future-weather-info">
+                            <p class="future-temperature" id="temperature3">0°</p>
+                            <img id="future-weather-info3" src="" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,8 +99,10 @@
             </div>
         </div>
     </div>
-
+    <script src="app/background.js"></script>
     <script src="app/time.js"></script>
     <script src="app/geolocation.js"></script>
+    <script src="app/weather.js"></script>
+    <script src="app/locale.js"></script>
 </body>
 </html>

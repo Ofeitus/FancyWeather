@@ -1,0 +1,44 @@
+.form_toggle {
+    display: flex;
+    height: 44px;
+}
+.form_toggle-item {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_toggle-item input[type=radio] {
+	display: none;
+}
+.form_toggle-item label {
+	padding: 0px 15px;
+    line-height: 44px;
+	cursor: pointer;
+}
+ 
+.form_toggle .item-1 label {
+	border-radius: 10px 0 0 10px;
+}
+.form_toggle .item-2 label {
+	border-radius: 0 10px 10px 0;
+}
+ 
+.form_toggle .item-1 input[type=radio] + label {
+    color: #ffffffaa;
+	background: #37373777;
+}
+
+.form_toggle .item-1 input[type=radio]:checked + label {
+    color: #fff;
+	background: #373737;
+}
+
+.form_toggle .item-2 input[type=radio] + label {
+    color: #ffffffaa;
+	background: #37373777;
+}
+
+.form_toggle .item-2 input[type=radio]:checked + label {
+    color: #fff;
+	background: #373737;
+}
