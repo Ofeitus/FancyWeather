@@ -1,3 +1,5 @@
+const map_container = document.querySelector("#map");
+
 function getMap(coords) {
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2lzbG9yb2QiLCJhIjoiY2tvcHhsbDVwMHBzeTJ2c2o1djVzODY3eSJ9.S2bQVUWkOds89dtJzU-12Q';
     var map = new mapboxgl.Map({
@@ -7,9 +9,17 @@ function getMap(coords) {
         zoom: 9
     });
 
+    map.on('click', function(e) {
+        getWeather(getWeatherApiUrlByCoords([e.lngLat.lat, e.lngLat.lng]));
+        });
+
     var marker = new mapboxgl.Marker()
         .setLngLat([coords[1], coords[0]])
         .addTo(map);
+}
+
+function getMapCoords() {
+    console.log(map.transform.center);
 }
 
 async function getMyCity() {

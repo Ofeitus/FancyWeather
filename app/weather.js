@@ -36,22 +36,28 @@ function displayTemp() {
 
 function handleSearch(e) {
     if (e.which == 13 || e.keyCode == 13) {
-        getWeather(cityInput.value);
+        getWeather(getWeatherApiUrlByCity(cityInput.value));
     }
 }
 
-async function getWeather(city) {
-    console.log(city);
-    const url = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&lang=ru&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
+function getWeatherApiUrlByCity(city) {
+    return "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&lang="+locale+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
+}
+
+function getWeatherApiUrlByCoords(coords) {
+    return "https://api.openweathermap.org/data/2.5/forecast?lat="+coords[0]+"&lon="+coords[1]+"&lang="+locale+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
+}
+
+async function getWeather(url) {
     const res = await fetch(url);
     const data = await res.json();
 
     weather_data = data;
 
-    location_header.innerHTML = (data.city.name + ", " + data.city.country).toUpperCase();
+    location_header.innerHTML = (data.city.name + ", " + (new Intl.DisplayNames([locale], { type: 'region' })).of(data.city.country)).toUpperCase();
     timezone = data.city.timezone;
 
-    weather_description.innerHTML = data.list[0].weather[0].main.toUpperCase();
+    weather_description.innerHTML = data.list[0].weather[0].description.toUpperCase();
     wind_speed.innerHTML = Math.round(data.list[0].wind.speed);
     humidity.innerHTML = data.list[0].main.humidity;
 
@@ -72,11 +78,12 @@ async function getWeather(city) {
 }
 
 async function main() {
-    cityInputButton.addEventListener("click", function(){getWeather(cityInput.value);});
+    cityInputButton.addEventListener("click", function(){getWeather(getWeatherApiUrlByCity(cityInput.value));});
     units_toggle.addEventListener("click", displayTemp);
     cityInput.addEventListener("keypress", handleSearch);
     let myCity = await getMyCity();
-    getWeather(myCity);
+    setLocale();
+    getWeather(getWeatherApiUrlByCity(myCity));
 }
 
 main();

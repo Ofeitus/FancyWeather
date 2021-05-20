@@ -49,7 +49,7 @@
         <div id="main">
             <div id="weather">
                 <div id="weather-header">
-                    <h2 id="location-header">MINSK, BELARUS</h2>
+                    <h2 id="location-header">-</h2>
                     <time id="date-time">Mon 28 October 00:00:00</time>
                 </div>
                 <div id="today-weather-forecast">
@@ -60,9 +60,18 @@
                     <div class="weather-info">
                         <img id="today-weather-info" src="" alt="">
                         <p class="weather-info-item" id="description">-</p>
-                        <p class="weather-info-item" id="feels-like">FEELS LIKE: <span id="feels-like-value">0</span>°</p>
-                        <p class="weather-info-item" id="wind-speed">WIND: <span id="wind-speed-value">0</span> m/s</p>
-                        <p class="weather-info-item" id="humidity">HUMIDITY: <span id="humidity-value">0</span>%</p>
+                        <div class="weather-info-item">
+                            <p id="feels-like">FEELS LIKE:&nbsp;</p>
+                            <span id="feels-like-value">0</span>°
+                        </div>
+                        <div class="weather-info-item">
+                            <p id="wind-speed">WIND:&nbsp;</p>
+                            <span id="wind-speed-value">0</span> m/s
+                        </div>
+                        <div class="weather-info-item">
+                            <p id="humidity">HUMIDITY:&nbsp;</p>
+                            <span id="humidity-value">0</span>%
+                        </div>
                     </div>
                 </div>
                 <div class="future-forecasts">
@@ -93,8 +102,14 @@
                 <div id="map">
                 </div>
                 <div class="coordinates">
-                    <div id="latitutude">Latitude: <span id="latitude-value">53</span></div>
-                    <div id="longitude">Longitude: <span id="longitude-value">27</span></div>
+                    <div class="coord">
+                        <p id="latitude">Latitude:&nbsp;</p>
+                        <span id="latitude-value">0</span>
+                    </div>
+                    <div class="coord">
+                        <p id="longitude">Longitude:&nbsp;</p>
+                        <span id="longitude-value">0</span>
+                    </div>
                 </div>
             </div>
         </div>
