@@ -16,6 +16,8 @@ function getMap(coords) {
     var marker = new mapboxgl.Marker()
         .setLngLat([coords[1], coords[0]])
         .addTo(map);
+
+    document.querySelector(".mapboxgl-ctrl-bottom-right").innerHTML = "";
 }
 
 function getMapCoords() {

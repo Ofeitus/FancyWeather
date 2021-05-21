@@ -14,6 +14,7 @@ const units_toggle = document.querySelector(".form_toggle");
 const metric_units = document.querySelector("#fid-2");
 
 var weather_data;
+var weather_coords = [0, 0];
 
 function displayTemp() {
     if (metric_units.checked) {
@@ -63,9 +64,9 @@ async function getWeather(url) {
 
     today_weather_info.setAttribute("src", "http://openweathermap.org/img/wn/"+data.list[0].weather[0].icon+"@2x.png");
 
-    let coords = [data.city.coord.lat, data.city.coord.lon];
-    latitude.innerHTML = Math.trunc(coords[0]) + "°" + coords[0].toString().split(".")[1].slice(0, 2).padEnd(2, "0") + "'";
-    longitude.innerHTML= Math.trunc(coords[1]) + "°" + coords[1].toString().split(".")[1].slice(0, 2).padEnd(2, "0") + "'";
+    weather_coords = [data.city.coord.lat, data.city.coord.lon];
+    latitude.innerHTML = Math.trunc(weather_coords[0]) + "°" + weather_coords[0].toString().split(".")[1].slice(0, 2).padEnd(2, "0") + "'";
+    longitude.innerHTML= Math.trunc(weather_coords[1]) + "°" + weather_coords[1].toString().split(".")[1].slice(0, 2).padEnd(2, "0") + "'";
     
     // future weather
     for (let i = 1; i <= 3; i++) {
@@ -74,7 +75,7 @@ async function getWeather(url) {
     }
 
     displayTemp();
-    getMap(coords);
+    getMap(weather_coords);
 }
 
 async function main() {
@@ -82,8 +83,8 @@ async function main() {
     units_toggle.addEventListener("click", displayTemp);
     cityInput.addEventListener("keypress", handleSearch);
     let myCity = await getMyCity();
-    setLocale();
     getWeather(getWeatherApiUrlByCity(myCity));
+    setLocale();
 }
 
 main();

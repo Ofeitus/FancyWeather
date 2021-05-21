@@ -2,6 +2,7 @@ const language_chooser = document.querySelector(".language-choice");
 
 function setLocale() {
     locale = language_chooser.value.toLowerCase();
+    recognition.lang = locale;
     if (language_chooser.value == "RU") {
         document.querySelector("#feels-like").innerHTML = "Ощущается как:&nbsp;";
         document.querySelector("#wind-speed").innerHTML = "Ветер:&nbsp;";
@@ -19,6 +20,7 @@ function setLocale() {
         document.querySelector(".search-button").innerHTML = "Search";
         document.querySelector("#location-input").setAttribute("placeholder", "Enter city or zip");
     }
+    getWeather(getWeatherApiUrlByCoords(weather_coords));
 }
 
 language_chooser.addEventListener("change", setLocale);

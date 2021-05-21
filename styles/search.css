@@ -32,14 +32,36 @@
     outline: none;
 }
 
-#voice-control {
+.voice-control {
     display: flex;
     justify-content: center;
     align-items: center;
+	background: #373737;
+	border-radius: 50%;
+	margin-top: 4px;
+	height: 40px;
+	width: 40px;
+
+	box-shadow: 0 0 0 0 #373737;
+	transform: scale(1);
+	animation: none;
 }
 
-#voice-control img{
-    height: 30px;
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 #373737b3;
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px #37373700;
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 #37373700;
+	}
 }
 
 .search-button {

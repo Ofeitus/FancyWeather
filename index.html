@@ -10,6 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+        crossorigin="anonymous"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <title>Fancy weather</title>
 </head>
@@ -39,8 +45,8 @@
             <div class="search-form">
                 <div class="location-field">
                     <input id="location-input" placeholder="Enter city or zip" required>
-                    <div id="voice-control">
-                        <img src="resources/mic.png" />
+                    <div class='voice-control'>
+                        <i class="fa fa-microphone"></i>
                     </div>
                 </div>
                 <button class="search-button">Search</button>
@@ -117,6 +123,7 @@
     <script src="app/background.js"></script>
     <script src="app/time.js"></script>
     <script src="app/geolocation.js"></script>
+    <script src="app/voice.js"></script>
     <script src="app/weather.js"></script>
     <script src="app/locale.js"></script>
 </body>
