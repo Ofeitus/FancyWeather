@@ -11,13 +11,24 @@ const humidity = document.querySelector("#humidity-value");
 const today_weather_info = document.querySelector("#today-weather-info");
 
 const units_toggle = document.querySelector(".form_toggle");
-const metric_units = document.querySelector("#fid-2");
+const celsius = document.querySelector("#fid-2");
+const fahrenheit = document.querySelector("#fid-1");
+
+if (localStorage.getItem("weather_units") == null) {
+    localStorage.setItem("weather_units", "metric");
+} else if (localStorage.getItem("weather_units") == "metric") {
+    celsius.checked = true;
+    fahrenheit.checked = false;
+} else if (localStorage.getItem("weather_units") == "imperial") {
+    celsius.checked = false;
+    fahrenheit.checked = true;
+}
 
 var weather_data;
 var weather_coords = [0, 0];
 
 function displayTemp() {
-    if (metric_units.checked) {
+    if (celsius.checked) {
         today_temperature.innerHTML = Math.round(weather_data.list[0].main.temp);
         feels_like.innerHTML = Math.round(weather_data.list[0].main.feels_like);
     } else {
@@ -27,7 +38,7 @@ function displayTemp() {
     // future weather
     for (let i = 1; i <= 3; i++) {
         let future_temperature = document.querySelector("#temperature"+i);
-        if (metric_units.checked) {
+        if (celsius.checked) {
             future_temperature.innerHTML = Math.round(weather_data.list[8 * i].main.temp) + "°";
         } else {
             future_temperature.innerHTML = Math.round(weather_data.list[8 * i].main.temp*1.8+32) + "°";
@@ -35,27 +46,42 @@ function displayTemp() {
     }
 }
 
+function setUnits() {
+    if (celsius.checked) {
+        localStorage.setItem("weather_units", "metric");
+    } else {
+        localStorage.setItem("weather_units", "imperial");
+    }
+    displayTemp();
+}
+
 function handleSearch(e) {
+    cityInput.setAttribute("placeholder", "Enter city or zip");
     if (e.which == 13 || e.keyCode == 13) {
         getWeather(getWeatherApiUrlByCity(cityInput.value));
     }
 }
 
 function getWeatherApiUrlByCity(city) {
-    return "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&lang="+locale+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
+    return "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&lang="+localStorage.getItem("weather_locale")+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
 }
 
 function getWeatherApiUrlByCoords(coords) {
-    return "https://api.openweathermap.org/data/2.5/forecast?lat="+coords[0]+"&lon="+coords[1]+"&lang="+locale+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
+    return "https://api.openweathermap.org/data/2.5/forecast?lat="+coords[0]+"&lon="+coords[1]+"&lang="+localStorage.getItem("weather_locale")+"&units=metric&APPID=1c77421b3dcb55d2c0da4104a6ada19f";
 }
 
 async function getWeather(url) {
     const res = await fetch(url);
     const data = await res.json();
 
+    if (data.cod != "200") {
+        cityInput.value = "";
+        cityInput.setAttribute("placeholder", data.message);
+    }
+
     weather_data = data;
 
-    location_header.innerHTML = (data.city.name + ", " + (new Intl.DisplayNames([locale], { type: 'region' })).of(data.city.country)).toUpperCase();
+    location_header.innerHTML = (data.city.name + ", " + (new Intl.DisplayNames([localStorage.getItem("weather_locale")], { type: 'region' })).of(data.city.country)).toUpperCase();
     timezone = data.city.timezone;
 
     weather_description.innerHTML = data.list[0].weather[0].description.toUpperCase();
@@ -80,10 +106,10 @@ async function getWeather(url) {
 
 async function main() {
     cityInputButton.addEventListener("click", function(){getWeather(getWeatherApiUrlByCity(cityInput.value));});
-    units_toggle.addEventListener("click", displayTemp);
+    units_toggle.addEventListener("click", setUnits);
     cityInput.addEventListener("keypress", handleSearch);
     let myCity = await getMyCity();
-    getWeather(getWeatherApiUrlByCity(myCity));
+    await getWeather(getWeatherApiUrlByCity(myCity));
     setLocale();
 }
 

@@ -20,15 +20,15 @@
     <title>Fancy weather</title>
 </head>
 <body>
-    <div id="content">
+    <div id="main-container">
         <div id="top-bar">
             <div id="settings">
                 <div class="refresh-back">
                     <img src="resources/Refresh_icon.png">
                 </div>
                 <select class="language-choice">
-                    <option>RU</option>
-                    <option>EN</option>
+                    <option value="ru">RU</option>
+                    <option value="en">EN</option>
                 </select>
 
                 <div class="form_toggle">
@@ -121,10 +121,10 @@
         </div>
     </div>
     <script src="app/background.js"></script>
+    <script src="app/locale.js"></script>
     <script src="app/time.js"></script>
     <script src="app/geolocation.js"></script>
     <script src="app/voice.js"></script>
     <script src="app/weather.js"></script>
-    <script src="app/locale.js"></script>
 </body>
 </html>

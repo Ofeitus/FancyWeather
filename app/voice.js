@@ -12,6 +12,7 @@ recognition.maxAlternatives = 1;
 const voice = document.querySelector('.voice-control');
 
 voice.onclick = function() {
+  recognition.lang = localStorage.getItem("weather_locale");
   recognition.start();
   voice.style.animation = 'pulse 1s infinite';
   voice.disabled = true;

@@ -1,8 +1,11 @@
 const language_chooser = document.querySelector(".language-choice");
+if (localStorage.getItem("weather_locale") == null) {
+    localStorage.setItem("weather_locale", "en");
+}
+language_chooser.value = localStorage.getItem("weather_locale");
 
 function setLocale() {
-    locale = language_chooser.value.toLowerCase();
-    recognition.lang = locale;
+    localStorage.setItem("weather_locale", language_chooser.value);
     if (language_chooser.value == "RU") {
         document.querySelector("#feels-like").innerHTML = "Ощущается как:&nbsp;";
         document.querySelector("#wind-speed").innerHTML = "Ветер:&nbsp;";

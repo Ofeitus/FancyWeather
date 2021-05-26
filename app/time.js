@@ -1,12 +1,16 @@
 const date_time = document.querySelector('#date-time');
 var timezone = 0;
-var locale = "ru";
+
+if (localStorage.getItem("weather_locale") == null) {
+    localStorage.setItem("weather_locale", "en");
+}
 
 function addZero(n) {
     return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
 function showTime() {
+    let locale = localStorage.getItem("weather_locale");
     let today = new Date();
     today.setTime(today.getTime() + (today.getTimezoneOffset()*60 + timezone)*1000);
 
